@@ -1,22 +1,22 @@
 version: "3.1"
 services:
 
-    postgres:
+    database:
       image: mdillon/postgis:11-alpine
-      container_name: mapa-violencia-postgres
+      container_name: database
       working_dir: /application
       ports:
         - "5432:5432"
       volumes:
         - .:/application
       environment:
-        - POSTGRES_USER=root
-        - POSTGRES_PASSWORD=root
+        - POSTGRES_USER=admin
+        - POSTGRES_PASSWORD=admin
         - POSTGRES_DB=mapa
 
     webserver:
       image: nginx:alpine
-      container_name: mapa-violencia-webserver
+      container_name: webserver
       working_dir: /application
       volumes:
           - .:/application
@@ -24,9 +24,9 @@ services:
       ports:
        - "8888:80"
 
-    php-fpm:
+    app:
       build: docker/php-fpm
-      container_name: mapa-violencia-php-fpm
+      container_name: app
       working_dir: /application
       volumes:
         - .:/application
