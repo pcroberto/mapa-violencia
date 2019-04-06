@@ -11,7 +11,9 @@
 @endsection
 
 @section('content')
+<div class="container-fluid">
     <div id="mapid"></div>
+</div>
 
 
 @endsection
