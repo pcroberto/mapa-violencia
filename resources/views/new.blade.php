@@ -7,13 +7,13 @@
 
 @section('style')
    <style>
-       #mymap { height: 300px; }
+       #mymap { height: 30%; }
    </style> 
 @endsection
 
 @section('content')
 
-<div class="container">
+<div class="container my-3 p-3 bg-white rounded shadow-sm">
     <form>
         <div class="form-group">
             <label for="mymap">Selecione no mapa o local da ocorrência</label>

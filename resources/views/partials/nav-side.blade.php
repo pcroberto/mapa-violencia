@@ -1,6 +1,6 @@
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="{{ url('/') }}">
             <i class="fas fa-map-marked-alt"></i>
             <span>Mapa</span>
