@@ -13,7 +13,7 @@ class CreateEstado extends Migration
      */
     public function up()
     {
-        Schema::create('estado', function (Blueprint $table) {
+        Schema::create('estados', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome');
             $table->string('uf');
@@ -28,6 +28,6 @@ class CreateEstado extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('estado');
+        Schema::dropIfExists('estados');
     }
 }

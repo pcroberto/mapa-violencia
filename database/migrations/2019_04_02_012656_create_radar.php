@@ -13,12 +13,12 @@ class CreateRadar extends Migration
      */
     public function up()
     {
-        Schema::create('radar', function (Blueprint $table) {
+        Schema::create('radares', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('localizacao_id');
-            $table->foreign('localizacao_id')->references('id')->on('localizacao');
+            $table->foreign('localizacao_id')->references('id')->on('localizacoes');
             $table->unsignedBigInteger('usuario_id');
-            $table->foreign('usuario_id')->references('id')->on('usuario');
+            $table->foreign('usuario_id')->references('id')->on('usuarios');
             $table->integer('raio');
             $table->boolean('ativo')->default(true);
             $table->timestamps();
@@ -32,6 +32,6 @@ class CreateRadar extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('radar');
+        Schema::dropIfExists('radares');
     }
 }

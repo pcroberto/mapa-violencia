@@ -13,7 +13,7 @@ class CreateVitima extends Migration
      */
     public function up()
     {
-        Schema::create('vitima', function (Blueprint $table) {
+        Schema::create('vitimas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome')->nullable();
             $table->char('sexo', 1)->nullable();
@@ -31,6 +31,6 @@ class CreateVitima extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vitima');
+        Schema::dropIfExists('vitimas');
     }
 }
