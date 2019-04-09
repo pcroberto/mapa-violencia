@@ -7,13 +7,16 @@
 @section('style')
    <style>
        #mapid { height: 100%; }
+       .content-wrapper .wrapper {
+           padding-top: 0%;
+       }
    </style> 
 @endsection
 
 @section('content')
-<div class="container-fluid">
+{{-- <div class="container-fluid"> --}}
     <div id="mapid"></div>
-</div>
+{{-- </div> --}}
 
 
 @endsection

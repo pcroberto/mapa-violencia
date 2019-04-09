@@ -6,31 +6,58 @@
 @include('partials.leaflet-esri')
 
 @section('style')
-   <style>
-       #mymap { height: 30%; }
-   </style> 
+    <link href="{{ asset('css/callout.css') }}" rel="stylesheet"> 
+    <style>
+        #mymap { height: 30%; }
+    </style> 
 @endsection
 
 @section('content')
 
-<div class="container my-3 p-3 bg-white rounded shadow-sm">
+<div class="container my-3 p-3 bg-white rounded shadow-lg">
     <form>
         <div class="form-group">
-            <label for="mymap">Selecione no mapa o local da ocorrência</label>
+            <label for="mymap">Onde aconteceu?</label>
             <small id="mymapWarning" class="form-text text-muted">Atenção: Apesar de serem permitidas denúncias anônimas, não são aceitos relatos falsos.</small>
             <div id="mymap"></div>
-            <small id="mymapHelp" class="form-text text-muted"> </small>
-            
+            <small id="mymapHelp" class="form-text text-muted"> </small>   
+        </div>
+        <div class="form-group ">
+            <label for="crime" class="form-label-sm">O que aconteceu?</label>
+            <select class="form-control form-control-sm" id="crime">
+                <option value="1">HAHAHA</option>
+                <option value="2">XOXOX</option>
+                <option value="3">CUCUCU</option>
+                <option value="4">HEHEHE</option>
+                <option value="5">AHAM</option>
+            </select>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-sm-6">
+                <label for="data" class="form-label-sm">Em qual dia aconteceu?</label>
+                <input type="date" class="form-control form-control-sm" id="data">
+                <small class="form-text text-muted">Exemplo: 30/04/2019</small>
+            </div>
+            <div class="form-group col-sm-6">
+                <label for="hora" class="form-label-sm">Em que hora aconteceu?</label>
+                <input type="time" class="form-control form-control-sm" id="hora">
+                <small class="form-text text-muted">Exemplo: 13:50</small>
+            </div>
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <label for="descricao" class="form-label-sm">Descreva com suas palavras</label>
+            <textarea class="form-control form-control-sm" id="descricao" rows="3"></textarea>
         </div>
         <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            <input type="checkbox" class="form-check-input form-control-sm" id="exampleCheck1">
+            <label class="form-check-label form-label-sm" for="exampleCheck1">Check me out</label>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <hr>
+        <div class="bd-callout bd-callout-warning">
+            <h5>Dados da vítima</h5>
+            <p>Abaixo serão pedidos os dados da vítima, porém você é livre para informar somente aquilo o que desejar.</p>
+        </div>
+        <button id="salvar" class="btn btn-primary">Salvar</button>
     </form>
     
 </div>
@@ -52,7 +79,7 @@
 		    id: 'mapbox.streets'
     	}).addTo(mymap);
 
-
+        $('#datetimepicker1').datetimepicker();
 
         var marker = L.marker();
 
