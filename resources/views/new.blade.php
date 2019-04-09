@@ -79,8 +79,6 @@
 		    id: 'mapbox.streets'
     	}).addTo(mymap);
 
-        $('#datetimepicker1').datetimepicker();
-
         var marker = L.marker();
 
         var geocodeService = L.esri.Geocoding.geocodeService();
