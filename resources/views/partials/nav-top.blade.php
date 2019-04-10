@@ -1,12 +1,18 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-  
-    <a class="navbar-brand mr-1" href="{{ url('/') }}">Mapa Colaborativo</a>
+<div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container d-flex justify-content-between">
+        <a href="{{ url('/') }}" class="navbar-brand d-flex align-items-center">
+            <strong>Mapa Colaborativo</strong>
+        </a>
+        <a class="btn btn-outline-danger" href="{{ url('/new') }}">
+            <span class="light-orange">Nova ocorrência</span>
+        </a>
+    </div>
+    {{-- <a class="navbar-brand mr-1" href="{{ url('/') }}">Mapa Colaborativo</a> --}}
 
-    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+    {{-- <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>
-    </button>
+    </button> --}}
 
-    <div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0"></div>
 
     <!-- Navbar -->
     {{-- <ul class="navbar-nav ml-auto ml-md-0">
@@ -23,4 +29,4 @@
       </li>
     </ul> --}}
 
-  </nav>
+</div>

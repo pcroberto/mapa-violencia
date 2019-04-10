@@ -1,5 +1,5 @@
     <!-- Sidebar -->
-    <ul class="sidebar navbar-nav">
+    <ul class="sidebar navbar-nav shadow-lg bg-dark-orange">
         <li class="nav-item">
           <a class="nav-link" href="{{ url('/') }}">
             <i class="fas fa-map-marked-alt"></i>
@@ -22,7 +22,7 @@
             <a class="dropdown-item" href="blank.html">Blank Page</a>
           </div>
         </li> --}}
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="{{ url('/new') }}">
             <i class="fas fa-map-marker-alt"></i>
             <span>Nova ocorrência</span></a>
@@ -30,7 +30,7 @@
         <li class="nav-item">
         <a class="nav-link" href="{{ url('/') }}">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>Estatísticas</span></a>
+            <span>Estatí­sticas</span></a>
         </li>
         
       </ul>

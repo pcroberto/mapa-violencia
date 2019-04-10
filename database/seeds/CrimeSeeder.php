@@ -16,5 +16,6 @@ class CrimeSeeder extends Seeder
         Crime::create(['descricao' => 'Tentativa de homicídio']);
         Crime::create(['descricao' => 'Estupro']);
         Crime::create(['descricao' => 'Assalto']);
+        Crime::create(['descricao' => 'Tentativa de assaulto']);
     }
 }
