@@ -13,7 +13,7 @@ class CreateRadarCrime extends Migration
      */
     public function up()
     {
-        Schema::create('radares_crimes', function (Blueprint $table) {
+        Schema::create('radar_crime', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('radar_id');
             $table->foreign('radar_id')->references('id')->on('radares');
@@ -30,6 +30,6 @@ class CreateRadarCrime extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('radares_crimes');
+        Schema::dropIfExists('radar_crime');
     }
 }

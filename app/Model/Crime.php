@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Crime extends Model
 {
     protected $table = 'crimes';
-    
-    protected $fillable = ['descricao'];
+
+    public function radares()
+    {
+        return $this->belongToMany('App\Model\Radar', 'radar_crime', 'crime_id', 'radar_id');
+    }
 }
