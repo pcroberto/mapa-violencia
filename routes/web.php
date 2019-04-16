@@ -15,6 +15,4 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/new', function () {
-    return view('new');
-});
+Route::get('/new', 'OcorrenciaController@index')->name('new.ocorrencia');

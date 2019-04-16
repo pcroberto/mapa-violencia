@@ -25,11 +25,11 @@
         <div class="form-group ">
             <label for="crime" class="form-label-sm">O que aconteceu?</label>
             <select class="form-control form-control-sm bg-light-orange" id="crime">
-                <option value="1">HAHAHA</option>
-                <option value="2">XOXOX</option>
-                <option value="3">CUCUCU</option>
-                <option value="4">HEHEHE</option>
-                <option value="5">AHAM</option>
+                <option value="0">Selecione...</option>
+
+                @foreach ($crimes as $crime)
+                    <option value="{{ $crime->id }}">{{ $crime->descricao }}</option>
+                @endforeach
             </select>
         </div>
         <div class="form-row">
@@ -48,17 +48,13 @@
             <label for="descricao" class="form-label-sm">Descreva com suas palavras</label>
             <textarea class="form-control form-control-sm bg-light-orange" id="descricao" rows="3"></textarea>
         </div>
-        <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input form-control-sm bg-light-orange" id="exampleCheck1">
-            <label class="form-check-label form-label-sm" for="exampleCheck1">Check me out</label>
-        </div>
         <hr>
         <div class="bd-callout bd-callout-warning">
             <h5>Dados da vítima</h5>
             <p>Abaixo serão pedidos os dados da vítima, porém você é livre para informar somente aquilo o que desejar.</p>
         </div>
         <div class="form-group">
-            <label for="nomeVitima" class="form-label-sm">Nome:</label>
+            <label for="nomeVitima" class="form-label-sm">Nome</label>
             <input type="text" class="form-control form-control-sm bg-light-orange" id="nomeVitima">
         </div>
         <div class="form-row">
@@ -94,6 +90,19 @@
                 </select>
             </div>
         </div>
+        <div class="form-row">
+            <div class="form-group col-sm-6">
+                <label for="crime" class="form-label-sm">Foi registrado o boletim de ocorrência?</label>
+                <select class="form-control form-control-sm bg-light-orange" id="crime">
+                    <option value="0">Não</option>
+                    <option value="1">Sim</option>
+                </select>
+            </div>
+            <div class="form-group col-sm-6">
+                <label for="idade" class="form-label-sm">Email</label>
+                <input type="email" class="form-control form-control-sm bg-light-orange" id="email">
+            </div>
+        </div>
         <button id="salvar" class="btn btn-primary">Salvar</button>
     </form>
     
@@ -106,7 +115,6 @@
 @section('scripts')
     <script>
         var mymap = L.map('mymap').setView([-30.050540, -51.184601], 13);
-        // var mymap = L.map('mymap').locate();
 
         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoicGNyb2JlcnRvIiwiYSI6ImNqdTNkNnFzcjBtMXU0M3B2aHlyd2t1bDAifQ.J6-ZOT3QIWqqc8uOodmWGQ', {
 		    maxZoom: 18,

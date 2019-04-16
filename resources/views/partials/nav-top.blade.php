@@ -3,7 +3,7 @@
         <a href="{{ url('/') }}" class="navbar-brand d-flex align-items-center">
             <strong>Mapa Colaborativo</strong>
         </a>
-        <a class="btn btn-outline-danger" href="{{ url('/new') }}">
+        <a class="btn btn-outline-danger" href="{{ route('new.ocorrencia') }}">
             <span class="light-orange">Nova ocorrência</span>
         </a>
     </div>
