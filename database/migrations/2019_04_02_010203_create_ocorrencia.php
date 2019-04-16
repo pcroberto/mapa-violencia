@@ -23,7 +23,7 @@ class CreateOcorrencia extends Migration
             $table->foreign('crime_id')->references('id')->on('crimes');
             $table->text('descricao');
             $table->date('data');
-            $table->date('hora');
+            $table->time('hora');
             $table->timestamps();
         });
     }

@@ -15,7 +15,7 @@ class CreateCrime extends Migration
     {
         Schema::create('crimes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('descricao');
+            $table->string('descricao')->unique();
             $table->timestamps();
         });
     }

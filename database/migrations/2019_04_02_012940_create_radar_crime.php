@@ -19,6 +19,7 @@ class CreateRadarCrime extends Migration
             $table->foreign('radar_id')->references('id')->on('radares');
             $table->unsignedBigInteger('crime_id');
             $table->foreign('crime_id')->references('id')->on('crimes');
+            $table->unique(['radar_id', 'crime_id']);
             $table->timestamps();
         });
     }

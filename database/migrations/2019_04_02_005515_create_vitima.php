@@ -16,10 +16,11 @@ class CreateVitima extends Migration
         Schema::create('vitimas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome')->nullable();
-            $table->char('sexo', 1)->nullable();
+            $table->enum('sexo', ['Masculino', 'Feminino'])->nullable();
+            $table->enum('etnia', ['Branco', 'Pardo', 'Negro', 'Indígena', 'Amarelo', 'Outro'])->nullable();
             $table->date('data_nascimento')->nullable();
             $table->boolean('boletim');
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->timestamps();
         });
     }
