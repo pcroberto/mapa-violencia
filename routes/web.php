@@ -11,8 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'OcorrenciaController@all')->name('all.ocorrencia');
 
 Route::get('/new', 'OcorrenciaController@index')->name('new.ocorrencia');
