@@ -6,7 +6,7 @@
 
 @section('style')
    <style>
-       #mapid { height: 100%; }
+       #mymap { height: 100%; }
        .content-wrapper .wrapper {
            padding-top: 0%;
        }
@@ -15,7 +15,7 @@
 
 @section('content')
 {{-- <div class="container-fluid"> --}}
-    <div id="mapid"></div>
+    <div id="mymap"></div>
 {{-- </div> --}}
 
 
@@ -24,7 +24,7 @@
 
 @section('scripts')
     <script>
-        var mapid = L.map('mapid').setView([-30.050540, -51.184601], 13);
+        var mymap = L.map('mymap').setView([-30.050540, -51.184601], 13);
 
         // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         //     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -35,7 +35,23 @@
     			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
 			    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
 		    id: 'mapbox.streets'
-    	}).addTo(mapid);
+        }).addTo(mymap);
+        
+        var ocorrencias = @json($ocorrencias);
+
+        $.map( ocorrencias, function( ocorrencia ) {
+            var mensagem = "<b>" + ocorrencia.crime.descricao + "</b>";
+                mensagem += "<br>";
+                mensagem += "<i>" + ocorrencia.datahora + "</i>";
+                mensagem += "<br>";
+                mensagem += ocorrencia.descricao;
+        
+            var coordenadas = ocorrencia.localizacao.local.coordinates;
+            var marker = L.marker();
+                marker.setLatLng([coordenadas[1], coordenadas[0]])
+                      .bindPopup(mensagem)
+                      .addTo(mymap);
+        });
     </script>
 
     

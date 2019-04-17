@@ -22,8 +22,7 @@ class CreateOcorrencia extends Migration
             $table->unsignedBigInteger('crime_id');
             $table->foreign('crime_id')->references('id')->on('crimes');
             $table->text('descricao');
-            $table->date('data');
-            $table->time('hora');
+            $table->datetime('datahora');
             $table->timestamps();
         });
     }

@@ -21,7 +21,9 @@ class DadosTesteSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    {   
+        DB::beginTransaction();
+
         Crime::create(['descricao' => 'Homicídio']);
         Crime::create(['descricao' => 'Tentativa de homicídio']);
         Crime::create(['descricao' => 'Estupro']);
@@ -61,9 +63,10 @@ class DadosTesteSeeder extends Seeder
         $ocorrencia->crime()->associate($crime);
         $ocorrencia->localizacao()->associate($localOcor);
         $ocorrencia->vitima()->associate($vitima);
-        $ocorrencia->descricao = "Assaltado por dos lek";
-        $ocorrencia->data = Carbon::today();
-        $ocorrencia->hora = Carbon::now();
+        $ocorrencia->descricao = "Assaltado por dos lek Assaltado por dos lek Assaltado por dos lek Assaltado por dos lek Assaltado por dos lek Assaltado por dos lek Assaltado por dos lek Assaltado por dos lek Assaltado por dos lek Assaltado por dos lek Assaltado por dos lek Assaltado por dos lek Assaltado por dos lek Assaltado por dos lek Assaltado por dos lek Assaltado por dos lek Assaltado por dos lek Assaltado por dos lek ";
+        $ocorrencia->datahora = Carbon::now();
         $ocorrencia->save();
+
+        DB::commit();
     }
 }
