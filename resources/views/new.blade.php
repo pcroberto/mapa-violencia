@@ -116,7 +116,6 @@
     @include('partials.map');
     <script>
         var marker = L.marker();
-
         var geocodeService = L.esri.Geocoding.geocodeService();
 
         function onMapClick(e) {
