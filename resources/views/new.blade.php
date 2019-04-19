@@ -15,38 +15,42 @@
 @section('content')
 
 <div class="container my-3 p-3 bg-white rounded shadow-lg">
-    <form>
+    {{ Form::open(['route' => 'save.ocorrencia']) }}
         <div class="form-group">
             <label for="mymap">Onde aconteceu?</label>
-            <small id="mymapWarning" class="form-text text-muted">Atenção: Apesar de serem permitidas denúncias anônimas, não são aceitos relatos falsos.</small>
+            <small id="mymapWarning" class="form-text text-muted">Selecione no mapa abaixo a localização do acontecimento.</small>
             <div id="mymap"></div>
-            <small id="mymapHelp" class="form-text text-muted"> </small>   
+            <small id="mymapHelp" class="form-text text-muted"> </small>
+            {{ Form::hidden('endereco', null, ['id' => 'endereco']) }}
+            {{ Form::hidden('cidade', null, ['id' => 'cidade']) }}
+            {{ Form::hidden('estado', null, ['id' => 'estado']) }}
+            {{ Form::hidden('latitude', null, ['id' => 'latitude']) }}
+            {{ Form::hidden('longitude', null, ['id' => 'longitude']) }}
         </div>
         <div class="form-group ">
-            <label for="crime" class="form-label-sm">O que aconteceu?</label>
-            <select class="form-control form-control-sm bg-light-orange" id="crime">
-                <option value="0">Selecione...</option>
-
-                @foreach ($crimes as $crime)
-                    <option value="{{ $crime->id }}">{{ $crime->descricao }}</option>
-                @endforeach
-            </select>
+            {{ Form::label("crime", "O que aconteceu?", ['class' => 'form-label-sm']) }}
+            {{ Form::select(
+                "crime", 
+                App\Model\Crime::pluck('descricao', 'id'), 
+                null, 
+                ['class' => 'form-control form-control-sm ', 'placeholder' => 'Selecione...', 'required']
+            ) }}
         </div>
         <div class="form-row">
             <div class="form-group col-sm-6">
-                <label for="data" class="form-label-sm">Em qual dia aconteceu?</label>
-                <input type="date" class="form-control form-control-sm bg-light-orange" id="data">
+                {{ Form::label("data", "Em qual dia aconteceu?", ['class' => 'form-label-sm']) }}
+                {{ Form::date("data", null, ['class' => 'form-control form-control-sm ', 'required']) }}
                 <small class="form-text text-muted">Exemplo: 30/04/2019</small>
             </div>
             <div class="form-group col-sm-6">
-                <label for="hora" class="form-label-sm">Em que hora aconteceu?</label>
-                <input type="time" class="form-control form-control-sm bg-light-orange" id="hora">
+                {{ Form::label("hora", "Em que hora aconteceu?", ['class' => 'form-label-sm']) }}
+                {{ Form::time("hora", null, ['class' => 'form-control form-control-sm ', 'required']) }}
                 <small class="form-text text-muted">Exemplo: 13:50</small>
             </div>
         </div>
         <div class="form-group">
-            <label for="descricao" class="form-label-sm">Descreva com suas palavras</label>
-            <textarea class="form-control form-control-sm bg-light-orange" id="descricao" rows="3"></textarea>
+            {{ Form::label("descricao", "Descreva com suas palavras", ['class' => 'form-label-sm']) }}
+            {{ Form::textarea("descricao", null, ['class' => 'form-control form-control-sm ', 'rows' => "3", 'placeholder' => "Descrição do caso", 'required']) }}
         </div>
         <hr>
         <div class="bd-callout bd-callout-warning">
@@ -54,57 +58,65 @@
             <p>Abaixo serão pedidos os dados da vítima, porém você é livre para informar somente aquilo o que desejar.</p>
         </div>
         <div class="form-group">
-            <label for="nomeVitima" class="form-label-sm">Nome</label>
-            <input type="text" class="form-control form-control-sm bg-light-orange" id="nomeVitima">
+            {{ Form::label("nomeVitima", "Nome", ['class' => 'form-label-sm']) }}
+            {{ Form::text("nomeVitima", null, ['class' => 'form-control form-control-sm ', 'placeholder' => "Nome"]) }}
         </div>
         <div class="form-row">
             <div class="form-group col-sm-6">
-                <label for="dataNasicmento" class="form-label-sm">Data de nascimento</label>
-                <input type="date" class="form-control form-control-sm bg-light-orange" id="dataNasicmento">
+                {{ Form::label("dataNasicmento", "Data de nascimento", ['class' => 'form-label-sm']) }}
+                {{ Form::date("dataNasicmento", null, ['class' => 'form-control form-control-sm ']) }}
                 <small class="form-text text-muted">Exemplo: 30/04/2019</small>
             </div>
             <div class="form-group col-sm-6">
-                <label for="sexo" class="form-label-sm">Sexo</label>
-                <select class="form-control form-control-sm bg-light-orange" id="sexo">
-                    <option value="1">Prefiro não dizer</option>
-                    <option value="2">Feminino</option>
-                    <option value="3">Masculino</option>
-                </select>
+                {{ Form::label("sexo", "Sexo", ['class' => 'form-label-sm']) }}
+                {{ Form::select(
+                    "sexo", 
+                    [
+                        "Feminino" => "Feminino",
+                        "Masculino" => "Masculino"
+                    ], 
+                    null, 
+                    ['class' => 'form-control form-control-sm ', 'placeholder' => "Prefiro não dizer"]) }}
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-sm-6">
-                <label for="idade" class="form-label-sm">Idade</label>
-                <input type="text" class="form-control form-control-sm bg-light-orange" id="idade">
+                {{ Form::label("idade", "Idade", ['class' => 'form-label-sm']) }}
+                {{ Form::number("idade", null, ['class' => 'form-control form-control-sm ']) }}
                 <small class="form-text text-muted">Somente números</small>
             </div>
             <div class="form-group col-sm-6">
-                <label for="cor" class="form-label-sm">Etnia</label>
-                <select class="form-control form-control-sm bg-light-orange" id="cor">
-                    <option value="1">Prefiro não dizer</option>
-                    <option value="2">Branco</option>
-                    <option value="3">Pardo</option>
-                    <option value="4">Negro</option>
-                    <option value="5">Indígena</option>
-                    <option value="6">Amarelo</option>
-                </select>
+                {{ Form::label("etnia", "Etnia", ['class' => 'form-label-sm']) }}
+                {{ Form::select(
+                    "etnia", 
+                    [
+                        "Branco" => "Branco",
+                        "Pardo" => "Pardo",
+                        "Negro" => "Negro",
+                        "Indígena" => "Indígena",
+                        "Amarelo" => "Amarelo"
+                    ], 
+                    null, 
+                    ['class' => 'form-control form-control-sm ', 'placeholder' => "Prefiro não dizer"]) }}
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-sm-6">
-                <label for="crime" class="form-label-sm">Foi registrado o boletim de ocorrência?</label>
-                <select class="form-control form-control-sm bg-light-orange" id="crime">
-                    <option value="0">Não</option>
-                    <option value="1">Sim</option>
-                </select>
+                {{ Form::label("boletim", "Foi registrado boletim de ocorrencia?", ['class' => 'form-label-sm']) }}
+                {{ Form::select(
+                    "boletim", 
+                    [ false => "Não", true => "Sim" ], 
+                    null, 
+                    ['class' => 'form-control form-control-sm ', 'placeholder' => "Prefiro não dizer"]) }}
             </div>
             <div class="form-group col-sm-6">
-                <label for="idade" class="form-label-sm">Email</label>
-                <input type="email" class="form-control form-control-sm bg-light-orange" id="email">
+                {{ Form::label("email", "Email", ['class' => 'form-label-sm']) }}
+                {{ Form::email("email", null, ['class' => 'form-control form-control-sm ', 'placeholder' => "Email"]) }}
+                <small class="form-text text-muted">Exemplo: fulano@dominio.com.br</small>
             </div>
         </div>
-        <button id="salvar" class="btn btn-primary">Salvar</button>
-    </form>
+        {{Form::submit("Salvar", [ 'class' => 'btn btn-primary' ])}}
+    {{ Form::close() }}
     
 </div>
 
@@ -118,16 +130,20 @@
         var marker = L.marker();
         var geocodeService = L.esri.Geocoding.geocodeService();
 
-        function onMapClick(e) {
+        mymap.on('click', function(e) {
+            $('#mymapHelp').html("Buscando...");
             marker.setLatLng(e.latlng)
                   .addTo(mymap);
-            
+
             geocodeService.reverse().latlng(e.latlng).run(function(error, result) {
                 $('#mymapHelp').html(result.address.LongLabel);
+                $('#endereco').val(result.address.LongLabel);
+                $('#cidade').val(result.address.City);
+                $('#estado').val(result.address.Region);
+                $('#latitude').val(e.latlng.lat);
+                $('#longitude').val(e.latlng.lng);
             });
-        }
-
-        mymap.on('click', onMapClick);
+        });
     </script>
 
     

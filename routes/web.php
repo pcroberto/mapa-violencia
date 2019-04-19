@@ -13,4 +13,8 @@
 
 Route::get('/', 'OcorrenciaController@all')->name('all.ocorrencia');
 
-Route::get('/new', 'OcorrenciaController@index')->name('new.ocorrencia');
+Route::get('new', function(){
+    return view('new');
+})->name('new.ocorrencia');
+
+Route::post('new', 'OcorrenciaController@save')->name('save.ocorrencia');
