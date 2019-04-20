@@ -14,6 +14,14 @@ use Phaza\LaravelPostgis\Geometries\Point;
 
 class OcorrenciaController extends Controller
 {
+    private $formMapRules = [
+        'endereco' => 'required',
+        'cidade' => 'required',
+        'estado' => 'required',
+        'latitude' => 'required',
+        'longitude' => 'required'
+    ];
+
     public function all()
     {
         $ocorrencias = Ocorrencia::with(['localizacao', 'crime'])->get();
@@ -26,42 +34,54 @@ class OcorrenciaController extends Controller
 
     public function save(Request $request)
     {
+        $validate = validator($request->all(), $this->formMapRules);
+        
+        if ($validate->fails()) {
+            \Session::flash('mensagem_erro', "Nenhuma localização foi marcada. Por favor, utilize o mapa abaixo para selecionar o endereço da ocorrência.");
+            return \Redirect::route('new.ocorrencia')->withInput();
+        }
+
         \DB::beginTransaction();
 
-        $parametros = $request->all();
-        $cidade = Cidade::where('nome', $parametros['cidade'])->first();
-        $crime = Crime::find($parametros['crime']);
+        $cidade = Cidade::where('nome', $request->cidade)->first();
+        $crime = Crime::find($request->crime);
 
         if (is_null($cidade)) {
-            $estado = Estado::where('nome', $parametros['estado'])->first();
+            $estado = Estado::where('nome', $request->estado)->first();
 
             $cidade = new Cidade();
-            $cidade->nome = $parametros['cidade'];
+            $cidade->nome = $request->cidade;
             $cidade->estado()->associate($estado);
             $cidade->save();
         }
 
         $local = new Localizacao();
-        $local->endereco = $parametros['endereco'];
+        $local->endereco = $request->endereco;
         $local->cidade()->associate($cidade);
-        $local->local = new Point((float) $parametros['latitude'], (float) $parametros['longitude']);
+        $local->local = new Point((float) $request->latitude, (float) $request->longitude);
         $local->save();
 
         $vitima = new Vitima();
-        $vitima->sexo = $parametros['sexo'];
-        $vitima->etnia = $parametros['etnia'];
-        $vitima->data_nascimento = Carbon::create($parametros['dataNasicmento']);
-        $vitima->boletim = $parametros['boletim'] == "1" ? true : false;
+        $vitima->nome = $request->nome_vitima;
+        $vitima->idade = $request->idade;
+        $vitima->email = $request->email;
+        $vitima->sexo = $request->sexo;
+        $vitima->etnia = $request->etnia;
+        $vitima->boletim = $request->boletim == "1" ? true : false;
         $vitima->save();
 
         $ocorrencia = new Ocorrencia();
         $ocorrencia->crime()->associate($crime);
         $ocorrencia->localizacao()->associate($local);
         $ocorrencia->vitima()->associate($vitima);
-        $ocorrencia->descricao = $parametros['descricao'];
-        $ocorrencia->datahora = Carbon::create($parametros['data'] . " " . $parametros['hora']);
+        $ocorrencia->descricao = $request->descricao;
+        $ocorrencia->datahora = Carbon::create($request->data . " " . $request->hora);
         $ocorrencia->save();
 
         \DB::commit();
+
+        \Session::flash('mensagem_sucesso', "Ocorrência cadastrada com sucesso.");
+
+        return \Redirect::route('new.ocorrencia');
     }
 }

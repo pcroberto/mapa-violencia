@@ -18,9 +18,9 @@ class CreateVitima extends Migration
             $table->string('nome')->nullable();
             $table->enum('sexo', ['Masculino', 'Feminino'])->nullable();
             $table->enum('etnia', ['Branco', 'Pardo', 'Negro', 'Indígena', 'Amarelo', 'Outro'])->nullable();
-            $table->date('data_nascimento')->nullable();
             $table->boolean('boletim');
             $table->string('email')->nullable();
+            $table->integer('idade');
             $table->timestamps();
         });
     }
