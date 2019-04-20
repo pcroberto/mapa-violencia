@@ -13,9 +13,9 @@ class CreateCrime extends Migration
      */
     public function up()
     {
-        Schema::create('crime', function (Blueprint $table) {
+        Schema::create('crimes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('descricao');
+            $table->string('descricao')->unique();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateCrime extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('crime');
+        Schema::dropIfExists('crimes');
     }
 }

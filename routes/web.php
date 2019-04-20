@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'OcorrenciaController@all')->name('all.ocorrencia');
+
+Route::get('new', function(){
+    return view('new');
+})->name('new.ocorrencia');
+
+Route::post('new', 'OcorrenciaController@save')->name('save.ocorrencia');

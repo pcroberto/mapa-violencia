@@ -13,18 +13,16 @@ class CreateOcorrencia extends Migration
      */
     public function up()
     {
-        Schema::create('ocorrencia', function (Blueprint $table) {
+        Schema::create('ocorrencias', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('vitima_id');
-            $table->foreign('vitima_id')->references('id')->on('vitima');
+            $table->foreign('vitima_id')->references('id')->on('vitimas');
             $table->unsignedBigInteger('localizacao_id');
-            $table->foreign('localizacao_id')->references('id')->on('localizacao');
+            $table->foreign('localizacao_id')->references('id')->on('localizacoes');
             $table->unsignedBigInteger('crime_id');
-            $table->foreign('crime_id')->references('id')->on('crime');
-            $table->string('titulo', 100);
+            $table->foreign('crime_id')->references('id')->on('crimes');
             $table->text('descricao');
-            $table->date('data');
-            $table->date('hora');
+            $table->datetime('datahora');
             $table->timestamps();
         });
     }
@@ -36,6 +34,6 @@ class CreateOcorrencia extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ocorrencia');
+        Schema::dropIfExists('ocorrencias');
     }
 }

@@ -13,12 +13,12 @@ class CreateLocalizacao extends Migration
      */
     public function up()
     {
-        Schema::create('localizacao', function (Blueprint $table) {
+        Schema::create('localizacoes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('endereco');
             $table->point('local');
             $table->unsignedBigInteger('cidade_id');
-            $table->foreign('cidade_id')->references('id')->on('cidade');
+            $table->foreign('cidade_id')->references('id')->on('cidades');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateLocalizacao extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('localizacao');
+        Schema::dropIfExists('localizacoes');
     }
 }

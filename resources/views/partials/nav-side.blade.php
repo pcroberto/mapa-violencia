@@ -1,12 +1,12 @@
     <!-- Sidebar -->
-    <ul class="sidebar navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span>
+    <ul class="sidebar navbar-nav shadow-lg bg-dark-orange">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url('/') }}">
+            <i class="fas fa-map-marked-alt"></i>
+            <span>Mapa</span>
           </a>
         </li>
-        <li class="nav-item dropdown">
+        {{-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-fw fa-folder"></i>
             <span>Pages</span>
@@ -21,15 +21,16 @@
             <a class="dropdown-item" href="404.html">404 Page</a>
             <a class="dropdown-item" href="blank.html">Blank Page</a>
           </div>
+        </li> --}}
+        <li class="nav-item active">
+          <a class="nav-link" href="{{ url('/new') }}">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Nova ocorrência</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{{ url('/') }}">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
+            <span>Estatí­sticas</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
-        </li>
+        
       </ul>

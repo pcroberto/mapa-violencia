@@ -16,9 +16,10 @@ class CreateRadarCrime extends Migration
         Schema::create('radar_crime', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('radar_id');
-            $table->foreign('radar_id')->references('id')->on('radar');
+            $table->foreign('radar_id')->references('id')->on('radares');
             $table->unsignedBigInteger('crime_id');
-            $table->foreign('crime_id')->references('id')->on('crime');
+            $table->foreign('crime_id')->references('id')->on('crimes');
+            $table->unique(['radar_id', 'crime_id']);
             $table->timestamps();
         });
     }

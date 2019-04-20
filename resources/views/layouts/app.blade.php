@@ -12,32 +12,29 @@
   <title>Mapa Colaborativo - @yield('title')</title>
 
   <!-- Custom fonts for this template-->
-  <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet" type="text/css">
 
   <!-- Custom styles for this template-->
   <link href="{{ asset('css/lib/sb-admin.min.css') }}" rel="stylesheet">
 
   <link href="{{ asset('css/lib/dataTables.bootstrap4.css') }}" rel="stylesheet">
 
+  <link href="{{ asset('css/colors.css') }}" rel="stylesheet">
+
   @yield('style')
 
 </head>
 
-<body id="page-top">
+<body id="page-top" class="bg-light-orange">
 
   @include('partials.nav-top')
 
   <div id="wrapper">
 
-	@include('partials.nav-side')
+	{{-- @include('partials.nav-side') --}}
 
     <div id="content-wrapper">
 
-      <div class="container-fluid">
-
         @yield('content')
-
-      </div>
 
     </div>
 

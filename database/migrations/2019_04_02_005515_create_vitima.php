@@ -13,13 +13,14 @@ class CreateVitima extends Migration
      */
     public function up()
     {
-        Schema::create('vitima', function (Blueprint $table) {
+        Schema::create('vitimas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome')->nullable();
-            $table->char('sexo', 1)->nullable();
-            $table->date('data_nascimento')->nullable();
+            $table->enum('sexo', ['Masculino', 'Feminino'])->nullable();
+            $table->enum('etnia', ['Branco', 'Pardo', 'Negro', 'Indígena', 'Amarelo', 'Outro'])->nullable();
             $table->boolean('boletim');
-            $table->string('email');
+            $table->string('email')->nullable();
+            $table->integer('idade');
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ class CreateVitima extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vitima');
+        Schema::dropIfExists('vitimas');
     }
 }

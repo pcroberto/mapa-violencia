@@ -13,11 +13,12 @@ class CreateCidade extends Migration
      */
     public function up()
     {
-        Schema::create('cidade', function (Blueprint $table) {
+        Schema::create('cidades', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome');
             $table->unsignedBigInteger('estado_id');
-            $table->foreign('estado_id')->references('id')->on('estado');
+            $table->foreign('estado_id')->references('id')->on('estados');
+            $table->index(['nome', 'estado_id']);
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateCidade extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cidade');
+        Schema::dropIfExists('cidades');
     }
 }
