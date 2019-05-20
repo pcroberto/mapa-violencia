@@ -32,6 +32,7 @@
             {{ Form::hidden('endereco', null, ['id' => 'endereco']) }}
             {{ Form::hidden('cidade', null, ['id' => 'cidade']) }}
             {{ Form::hidden('estado', null, ['id' => 'estado']) }}
+            {{ Form::hidden('pais', null, ['id' => 'pais']) }}
             {{ Form::hidden('latitude', null, ['id' => 'latitude']) }}
             {{ Form::hidden('longitude', null, ['id' => 'longitude']) }}
         </div>
@@ -151,6 +152,7 @@
                 $('#endereco').val(result.address.LongLabel);
                 $('#cidade').val(result.address.City);
                 $('#estado').val(result.address.Region);
+                $('#pais').val(result.address.CountryCode);
                 $('#latitude').val(e.latlng.lat);
                 $('#longitude').val(e.latlng.lng);
             });

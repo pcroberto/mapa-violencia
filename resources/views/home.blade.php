@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'Page Title')
+@section('title', 'Mapa principal')
 
 @include('partials.leaflet')
 
 @section('style')
    <style>
-       #mymap { height: 100%; }
+       #mymap { height: 94vh; }
        .content-wrapper .wrapper {
            padding-top: 0%;
        }

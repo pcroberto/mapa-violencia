@@ -28,19 +28,10 @@
 
   @include('partials.nav-top')
 
-  <div id="wrapper">
-
-	{{-- @include('partials.nav-side') --}}
-
-    <div id="content-wrapper">
-
-        @yield('content')
-
-    </div>
-
-  </div>
-  <!-- /#wrapper -->
+  @yield('content')
+  
   @include('partials.modal-logout')
+  
   <!-- Bootstrap core JavaScript-->
   <script src="{{ asset('js/lib/jquery.min.js') }}"></script>
   <script src="{{ asset('js/lib/bootstrap.bundle.min.js') }}"></script>

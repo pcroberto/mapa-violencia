@@ -14,6 +14,8 @@ use Phaza\LaravelPostgis\Geometries\Point;
 
 class OcorrenciaController extends Controller
 {
+    const BRASIL = 'BRA';
+
     private $formMapRules = [
         'endereco' => 'required',
         'cidade' => 'required',
@@ -38,6 +40,11 @@ class OcorrenciaController extends Controller
         
         if ($validate->fails()) {
             \Session::flash('mensagem_erro', "Nenhuma localização foi marcada. Por favor, utilize o mapa abaixo para selecionar o endereço da ocorrência.");
+            return \Redirect::route('new.ocorrencia')->withInput();
+        }
+
+        if ($request->pais != self::BRASIL) {
+            \Session::flash('mensagem_erro', "Não é permitido selecionar um endereço fora do território brasileiro.");
             return \Redirect::route('new.ocorrencia')->withInput();
         }
 
