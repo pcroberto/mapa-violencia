@@ -139,6 +139,8 @@
 @section('scripts')
     @include('partials.map');
     <script>
+        mymap.locate({setView : true});
+        mymap.setZoom(13);
         var marker = L.marker();
         var geocodeService = L.esri.Geocoding.geocodeService();
 

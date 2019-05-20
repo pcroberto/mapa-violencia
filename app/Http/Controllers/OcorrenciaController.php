@@ -24,16 +24,6 @@ class OcorrenciaController extends Controller
         'longitude' => 'required'
     ];
 
-    public function all()
-    {
-        $ocorrencias = Ocorrencia::with(['localizacao', 'crime'])->get();
-
-        foreach($ocorrencias as $ocorrencia){
-            $ocorrencia->datahora = date('d/m/Y H:i', strtotime($ocorrencia->datahora));
-        }
-        return view('home', ['ocorrencias' => $ocorrencias]);
-    }
-
     public function save(Request $request)
     {
         $validate = validator($request->all(), $this->formMapRules);

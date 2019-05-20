@@ -12,4 +12,9 @@ class Cidade extends Model
     {
         return $this->belongsTo('App\Model\Estado');
     }
+
+    public function ocorrencias()
+    {
+        return $this->hasManyThrough('App\Model\Ocorrencia', 'App\Model\Localizacao');
+    }
 }
