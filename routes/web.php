@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', 'OcorrenciaController@all')->name('all.ocorrencia');
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::post('/mainmap', 'HomeController@all')->name('all.ocorrencia');
 
 Route::get('new', function(){
     return view('new');

@@ -1,6 +1,6 @@
 <div class="navbar navbar-dark bg-dark shadow">
     <div class="container d-flex justify-content-between">
-        <a href="{{ route('all.ocorrencia') }}" class="navbar-brand d-flex align-items-center">
+        <a href="{{ route('home') }}" class="navbar-brand d-flex align-items-center">
             <strong>Mapa Colaborativo</strong>
         </a>
         <a class="btn btn-outline-danger" href="{{ route('new.ocorrencia') }}">
@@ -28,5 +28,4 @@
         </div>
       </li>
     </ul> --}}
-
 </div>

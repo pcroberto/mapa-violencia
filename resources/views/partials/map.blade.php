@@ -1,5 +1,5 @@
 <script>
-    var mymap = L.map('mymap').setView([-30.050540, -51.184601], 13);
+    var mymap = L.map('mymap');
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoicGNyb2JlcnRvIiwiYSI6ImNqdTNkNnFzcjBtMXU0M3B2aHlyd2t1bDAifQ.J6-ZOT3QIWqqc8uOodmWGQ', {
         maxZoom: 18,
@@ -8,4 +8,6 @@
             'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         id: 'mapbox.streets'
     }).addTo(mymap);
+    
+    L.control.scale().addTo(mymap);
 </script>
