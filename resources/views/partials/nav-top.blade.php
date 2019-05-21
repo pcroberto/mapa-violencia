@@ -1,31 +1,46 @@
-<div class="navbar navbar-dark bg-dark shadow">
-    <div class="container d-flex justify-content-between">
+<div class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    <div class="container">
         <a href="{{ route('home') }}" class="navbar-brand d-flex align-items-center">
             <strong>Mapa Colaborativo</strong>
         </a>
+
+        @if (Session::has('cidade'))
+            <div class="collapse navbar-collapse" id="navbarsExample07">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{ route('estatistica') }}">Estatísticas</a>
+                    </li>
+                    {{-- <li class="nav-item">
+                      <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                      <div class="dropdown-menu" aria-labelledby="dropdown07">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                      </div>
+                    </li> --}}
+                </ul>
+            </div>   
+        @endif
+        {{-- <div class="collapse navbar-collapse" id="navbarsExample01">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Estatísticas</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>
+        </div> --}}
         <a class="btn btn-outline-danger" href="{{ route('new.ocorrencia') }}">
             <span class="light-orange">Nova ocorrência</span>
         </a>
     </div>
-    {{-- <a class="navbar-brand mr-1" href="{{ url('/') }}">Mapa Colaborativo</a> --}}
-
-    {{-- <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-      <i class="fas fa-bars"></i>
-    </button> --}}
-
-
-    <!-- Navbar -->
-    {{-- <ul class="navbar-nav ml-auto ml-md-0">
-      <li class="nav-item dropdown no-arrow">
-        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-user-circle fa-fw"></i>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-          <a class="dropdown-item" href="#">Settings</a>
-          <a class="dropdown-item" href="#">Activity Log</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
-        </div>
-      </li>
-    </ul> --}}
 </div>

@@ -13,10 +13,16 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::post('/mainmap', 'HomeController@all')->name('all.ocorrencia');
+Route::post('mainmap', 'HomeController@all')->name('all.ocorrencia');
 
 Route::get('new', function(){
     return view('new');
 })->name('new.ocorrencia');
 
 Route::post('new', 'OcorrenciaController@save')->name('save.ocorrencia');
+
+Route::get('estatistica', function(){
+    return view('estatistica');
+})->name('estatistica');
+
+Route::post('estatistica', 'EstatisticaController@emitir')->name('emitir.estatistica');

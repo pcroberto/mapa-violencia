@@ -24,17 +24,19 @@
             <br>
             {{-- <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p> --}}
             {{ Form::open(['route' => 'all.ocorrencia']) }}
-                <div class="form-group">
-                    {{ Form::select(
-                        "cidade", 
-                        $cidades->all(),
-                        null, 
-                        ['class' => 'form-control ', 'placeholder' => 'Selecione uma cidade...', 'required']
-                    ) }}
-                </div>
-                <div class="form-group">
-                    {{Form::submit("Salvar", [ 'class' => 'btn btn-primary' ])}}
-                </div>
+                <center>
+                    <div class="form-group col-md-5">
+                        {{ Form::select(
+                            "cidade", 
+                            $cidades->all(),
+                            null, 
+                            ['class' => 'form-control', 'placeholder' => 'Selecione uma cidade...', 'required']
+                        ) }}
+                    </div>
+                    <div class="form-group">
+                        {{Form::submit("Buscar", [ 'class' => 'btn btn-primary' ])}}
+                    </div>
+                <center>
             {{ Form::close() }}
         </div>
     </section>

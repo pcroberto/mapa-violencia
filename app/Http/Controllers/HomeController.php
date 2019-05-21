@@ -7,12 +7,15 @@ use App\Model\Cidade;
 use App\Model\Estado;
 use App\Model\Localizacao;
 use App\Model\Ocorrencia;
-use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->session()->has('cidade')) {
+            $request->session()->forget('cidade');
+        }
+
         $cidades = Cidade::with('Estado')->orderBy('cidades.nome')->get();
         
         foreach ($cidades as $cidade) {
@@ -24,13 +27,14 @@ class HomeController extends Controller
 
     public function all(Request $request)
     {
+        $cidade = Cidade::with('Estado')->findOrFail($request->cidade);
+        $request->session()->put('cidade', $cidade);
+
         $ocorrencias = Cidade::find($request->cidade)->ocorrencias()->with('Crime', 'Localizacao')->get();
         
         foreach($ocorrencias as $ocorrencia){
             $ocorrencia->datahora = date('d/m/Y H:i', strtotime($ocorrencia->datahora));
         }
-
-        // dd($ocorrencias);
 
         return view('mainmap', ['ocorrencias' => $ocorrencias]);
     }
