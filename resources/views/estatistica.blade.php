@@ -22,15 +22,6 @@
             <div class="alert alert-danger">{{ \Session::get('mensagem_erro') }}</div>
         @endif
         <div class="form-group">
-            {{ Form::label("crime", "Crime dejesado", ['class' => 'form-label-sm']) }}
-            {{ Form::select(
-                "crime", 
-                App\Model\Crime::pluck('descricao', 'id'), 
-                null, 
-                ['class' => 'form-control form-control-sm ', 'placeholder' => 'Selecione...', 'required']
-            ) }}
-        </div>
-        <div class="form-group">
             {{ Form::label("tipo", "Tipo de Emissão", ['class' => 'form-label-sm']) }}
             {{ Form::select(
                 "tipo", 
@@ -39,16 +30,25 @@
                     2 => "Gráfico"
                 ], 
                 null, 
-                ['class' => 'form-control form-control-sm ', 'placeholder' => "Selecione..."]) }}
+                ['class' => 'form-control form-control-sm ', 'placeholder' => "Selecione...", "required"]) }}
+        </div>
+        <div class="form-group">
+            {{ Form::label("crime", "Crime dejesado", ['class' => 'form-label-sm']) }}
+            {{ Form::select(
+                "crime", 
+                App\Model\Crime::pluck('descricao', 'id'), 
+                null, 
+                ['class' => 'form-control form-control-sm ', 'placeholder' => 'Todos']
+            ) }}
         </div>
         <div class="form-group">
             {{ Form::label("data_inicio", "Data Inicial", ['class' => 'form-label-sm']) }}
-            {{ Form::date("data_inicio", null, ['class' => 'form-control form-control-sm ', 'required']) }}
+            {{ Form::date("data_inicio", null, ['class' => 'form-control form-control-sm ']) }}
             <small class="form-text text-muted">Exemplo: 30/04/2019</small>
         </div>
         <div class="form-group">
             {{ Form::label("data_fim", "Data Final", ['class' => 'form-label-sm']) }}
-            {{ Form::date("data_fim", null, ['class' => 'form-control form-control-sm ', 'required']) }}
+            {{ Form::date("data_fim", null, ['class' => 'form-control form-control-sm ']) }}
             <small class="form-text text-muted">Exemplo: 30/04/2019</small>
         </div>
 

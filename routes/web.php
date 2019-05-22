@@ -21,8 +21,6 @@ Route::get('new', function(){
 
 Route::post('new', 'OcorrenciaController@save')->name('save.ocorrencia');
 
-Route::get('estatistica', function(){
-    return view('estatistica');
-})->name('estatistica');
+Route::get('estatistica', 'EstatisticaController@index')->name('estatistica');
 
 Route::post('estatistica', 'EstatisticaController@emitir')->name('emitir.estatistica');

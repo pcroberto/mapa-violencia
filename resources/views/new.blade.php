@@ -130,9 +130,6 @@
     {{ Form::close() }}
     
 </div>
-
-
-
 @endsection
 
 
@@ -160,6 +157,4 @@
             });
         });
     </script>
-
-    
 @endsection
