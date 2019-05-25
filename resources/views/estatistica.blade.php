@@ -27,7 +27,7 @@
                 "tipo", 
                 [
                     1 => "Mapa de Calor",
-                    2 => "Gráfico"
+                    2 => "Gráfico mensal"
                 ], 
                 null, 
                 ['class' => 'form-control form-control-sm ', 'placeholder' => "Selecione...", "required"]) }}
@@ -43,12 +43,12 @@
         </div>
         <div class="form-group">
             {{ Form::label("data_inicio", "Data Inicial", ['class' => 'form-label-sm']) }}
-            {{ Form::date("data_inicio", null, ['class' => 'form-control form-control-sm ']) }}
+            {{ Form::date("data_inicio", null, ['class' => 'form-control form-control-sm', 'max' => Illuminate\Support\Carbon::today()->format('Y-m-d')]) }}
             <small class="form-text text-muted">Exemplo: 30/04/2019</small>
         </div>
         <div class="form-group">
             {{ Form::label("data_fim", "Data Final", ['class' => 'form-label-sm']) }}
-            {{ Form::date("data_fim", null, ['class' => 'form-control form-control-sm ']) }}
+            {{ Form::date("data_fim", null, ['class' => 'form-control form-control-sm', 'max' => Illuminate\Support\Carbon::today()->format('Y-m-d')]) }}
             <small class="form-text text-muted">Exemplo: 30/04/2019</small>
         </div>
 

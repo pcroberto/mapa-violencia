@@ -30,7 +30,7 @@
 
         $.map( ocorrencias, function( ocorrencia ) {
             var coordenadas = ocorrencia.localizacao.local.coordinates;
-            localizacoes.push([coordenadas[1], coordenadas[0], 7]);
+            localizacoes.push([coordenadas[1], coordenadas[0], 5]);
         });
 
         var heat = L.heatLayer(localizacoes).addTo(mymap);
