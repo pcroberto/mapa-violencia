@@ -34,7 +34,7 @@
                         ) }}
                     </div>
                     <div class="form-group">
-                        {{Form::submit("Buscar", [ 'class' => 'btn btn-primary' ])}}
+                        {{Form::submit("Buscar", [ 'class' => 'btn btn-info' ])}}
                     </div>
                 <center>
             {{ Form::close() }}

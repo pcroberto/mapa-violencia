@@ -24,3 +24,8 @@ Route::post('new', 'OcorrenciaController@save')->name('save.ocorrencia');
 Route::get('estatistica', 'EstatisticaController@index')->name('estatistica');
 
 Route::post('estatistica', 'EstatisticaController@emitir')->name('emitir.estatistica');
+
+Route::post('login', 'LoginController@efetuar')->name('efetuar.login');
+
+Route::post('cadastrar', 'LoginController@cadastrar')->name('cadastrar.login');
+

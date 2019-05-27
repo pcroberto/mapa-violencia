@@ -52,7 +52,7 @@
             <small class="form-text text-muted">Exemplo: 30/04/2019</small>
         </div>
 
-        {{Form::submit("Emitir", [ 'class' => 'btn btn-primary' ])}}
+        {{Form::submit("Emitir", [ 'class' => 'btn btn-info' ])}}
     {{ Form::close() }}
     
 </div>

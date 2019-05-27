@@ -14,11 +14,13 @@
     <!-- Custom fonts for this template-->
   
     <!-- Custom styles for this template-->
-    <link href="{{ asset('css/lib/sb-admin.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/lib/bootstrap.min.css') }}" rel="stylesheet">
   
     <link href="{{ asset('css/lib/dataTables.bootstrap4.css') }}" rel="stylesheet">
   
     <link href="{{ asset('css/colors.css') }}" rel="stylesheet">
+
+
   
     @yield('style')
 
@@ -27,6 +29,7 @@
 <body id="page-top">
 
     @include('partials.nav-top')
+    @include('partials.modal-login')
   
     @yield('content')
     
@@ -49,6 +52,5 @@
 
 <!-- Custom scripts for all pages-->
 <script src="{{ asset('js/lib/sb-admin.js') }}"></script>
-
 @yield('scripts')
 </html>

@@ -126,7 +126,7 @@
             <small class="form-text text-muted">Exemplo: fulano@dominio.com.br</small>
         </div>
 
-        {{Form::submit("Salvar", [ 'class' => 'btn btn-primary' ])}}
+        {{Form::submit("Salvar", [ 'class' => 'btn btn-info' ])}}
     {{ Form::close() }}
     
 </div>
