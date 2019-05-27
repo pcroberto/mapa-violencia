@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
     <div class="container">
         <a href="{{ route('home') }}" class="navbar-brand d-flex align-items-center">
-            <strong>Mapa Colaborativo</strong>
+            <strong>Mapa da Violência</strong>
         </a>
 
         
