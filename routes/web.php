@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
+// Route::get('/', 'HomeController@index')->name('home');
+
+// Route::get('/', 'HomeController@index')->name('home');
 
 Route::post('mainmap', 'HomeController@all')->name('all.ocorrencia');
 
@@ -28,4 +30,8 @@ Route::post('estatistica', 'EstatisticaController@emitir')->name('emitir.estatis
 Route::post('login', 'LoginController@efetuar')->name('efetuar.login');
 
 Route::post('cadastrar', 'LoginController@cadastrar')->name('cadastrar.login');
+
+Route::get('/', 'HomeController@index')->name('home');
+
+Auth::routes();
 

@@ -20,7 +20,18 @@
   
     <link href="{{ asset('css/colors.css') }}" rel="stylesheet">
 
-
+    <style>
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: red;
+            color: white;
+            text-align: center;
+        }
+    </style>
+        
   
     @yield('style')
 
@@ -29,18 +40,11 @@
 <body id="page-top">
 
     @include('partials.nav-top')
-    @include('partials.modal-login')
   
     @yield('content')
     
     @include('partials.modal-logout')
-  
-    <footer class="page-footer font-small bg-dark">
-        <div class="footer-copyright text-center py-3 text-white">
-            © 2019 Copyright:
-            <a href="https://mapadaviolencia.com.br"> mapadaviolencia.com.br</a>
-        </div>
-    </footer>
+
 
 </body>
 <!-- Bootstrap core JavaScript-->

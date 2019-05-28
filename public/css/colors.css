@@ -10,10 +10,6 @@
     color: #FBF2EF
 }
 
-.active {
-    color: #FF0000
-}
-
 .nav-pills .pill-1 .nav-link:not(.active) {
     background-color: rgba(23,162,184, 0.5);
 }
@@ -26,7 +22,6 @@
     background-color: rgba(0, 0, 250, 0.5);
     color: white;
 }
-
 
 /* active (faded) */
 .nav-pills .pill-1 .nav-link {
