@@ -16,9 +16,10 @@ class CreateRadar extends Migration
         Schema::create('radares', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('localizacao_id');
+            $table->string('nome')->nullable();
             $table->foreign('localizacao_id')->references('id')->on('localizacoes');
-            $table->unsignedBigInteger('usuario_id');
-            $table->foreign('usuario_id')->references('id')->on('usuarios');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->integer('raio');
             $table->boolean('ativo')->default(true);
             $table->timestamps();

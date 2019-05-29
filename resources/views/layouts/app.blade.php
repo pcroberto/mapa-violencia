@@ -20,6 +20,8 @@
   
     <link href="{{ asset('css/colors.css') }}" rel="stylesheet">
 
+    <link href="{{ asset('css/lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+
     <style>
         .footer {
             position: fixed;

@@ -33,5 +33,8 @@ Route::post('cadastrar', 'LoginController@cadastrar')->name('cadastrar.login');
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::get('/radares', 'RadarController@index')->name('listar.radar');
+Route::get('/novoradares', 'RadarController@new')->name('novo.radar');
+
 Auth::routes();
 
