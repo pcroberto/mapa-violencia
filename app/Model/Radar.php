@@ -18,8 +18,8 @@ class Radar extends Model
         return $this->belongsTo('App\Model\Localizacao');
     }
 
-    public function usuario()
+    public function user()
     {
-        return $this->belongsTo('App\Model\Usuario');
+        return $this->belongsTo('App\User');
     }
 }

@@ -21,7 +21,7 @@ Route::get('new', function(){
     return view('new');
 })->name('new.ocorrencia');
 
-Route::post('new', 'OcorrenciaController@save')->name('save.ocorrencia');
+Route::post('novo', 'OcorrenciaController@save')->name('save.ocorrencia');
 
 Route::get('estatistica', 'EstatisticaController@index')->name('estatistica');
 
@@ -33,8 +33,10 @@ Route::post('cadastrar', 'LoginController@cadastrar')->name('cadastrar.login');
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/radares', 'RadarController@index')->name('listar.radar');
-Route::get('/novoradares', 'RadarController@new')->name('novo.radar');
+Route::get('/radar', 'RadarController@index')->name('listar.radar');
+Route::get('/radar/novo', 'RadarController@new')->name('novo.radar');
+Route::post('/radar/novo', 'RadarController@save')->name('save.radar');
+Route::get('/radar/{id}/remover', 'RadarController@remover')->name('remover.radar');
 
 Auth::routes();
 

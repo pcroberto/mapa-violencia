@@ -8,7 +8,7 @@
 @section('style')
     <link href="{{ asset('css/callout.css') }}" rel="stylesheet"> 
     <style>
-        #mymap { height: 30%; }
+        #mymap { height: 40%; }
     </style> 
 @endsection
 
