@@ -20,6 +20,7 @@
                 <tr>
                     <th scope="col">Nome</th>
                     <th scope="col">Endereço</th>
+                    <th scope="col">Raio</th>
                     <th scope="col">Ação</th>
                 </tr>
             </thead>
@@ -35,6 +36,7 @@
                     <tr>
                         <td scope='row'>{{ $radar->nome }}</td>
                         <td>{{ $radar->localizacao->endereco }}</td>
+                        <td>{{ $radar->raio }} metros</td>
                         <td>
                             <a class="btn btn-danger" href="{{ route('remover.radar', ['id' => $radar->id]) }}">{{__('Remover')}}</a>
                         </td>

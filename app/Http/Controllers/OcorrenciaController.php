@@ -11,6 +11,8 @@ use App\Model\Localizacao;
 use App\Model\Vitima;
 use Illuminate\Support\Carbon;
 use Phaza\LaravelPostgis\Geometries\Point;
+use App\Jobs\MonitorarOcorrencia;
+
 
 class OcorrenciaController extends Controller
 {
@@ -78,6 +80,8 @@ class OcorrenciaController extends Controller
         \DB::commit();
 
         \Session::flash('mensagem_sucesso', "Ocorrência cadastrada com sucesso.");
+
+        MonitorarOcorrencia::dispatch($ocorrencia);
 
         return \Redirect::route('new.ocorrencia');
     }

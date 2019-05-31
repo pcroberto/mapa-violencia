@@ -40,3 +40,7 @@ Route::get('/radar/{id}/remover', 'RadarController@remover')->name('remover.rada
 
 Auth::routes();
 
+
+
+Route::get('/test', 'TestController@index')->name('teste.email');
+
