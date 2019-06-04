@@ -18,7 +18,13 @@ class HomeController extends Controller
 
         $cidades = Cidade::with('Estado')->orderBy('cidades.nome')->get();
         
-        foreach ($cidades as $cidade) {
+        foreach ($cidades as $id => $cidade) {
+            
+            if ($cidade->ocorrencias()->get()->count() == 0) {
+                $cidades->forget($id);
+                continue;
+            }
+
             $cidade->nome = $cidade->nome . ' - ' . $cidade->estado->uf;
         }
 

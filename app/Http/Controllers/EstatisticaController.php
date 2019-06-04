@@ -46,6 +46,12 @@ class EstatisticaController extends Controller
         }
         
         $ocorrencias = $queryBuilder->get();
+
+        if ($ocorrencias->count() == 0) {
+            \Session::flash('mensagem_erro', "Nenhuma ocorrência foi encontrada.");
+    
+            return \Redirect::route('estatistica');
+        }
         
         if ($request->tipo == 1) {
             return view('mapadecalor', ['ocorrencias' => $ocorrencias]);

@@ -15,7 +15,7 @@ class CidadeSeeder extends Seeder
     public function run()
     {
         $estado = Estado::create(['nome' => 'Rondônia', 'uf' => 'RO']);
-        $estado = Estado::create(['nome' => 'Acre',              'uf' => 'AC']);
+        $estado = Estado::create(['nome' => 'Acre', 'uf' => 'AC']);
         $estado = Estado::create(['nome' => 'Amazonas', 'uf' => 'AM']);
         $estado = Estado::create(['nome' => 'Roraima', 'uf' => 'RR']);
         $estado = Estado::create(['nome' => 'Pará', 'uf' => 'PA']);
